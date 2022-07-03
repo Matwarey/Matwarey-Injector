@@ -1,7 +1,7 @@
 :: Startup Commands
 @echo off
 @Mode 77,13
-title Matwarey Injector Stable
+title Matwarey Injector x32 Stable
 
 :: Load Main Menu
 Batbox /h 0
