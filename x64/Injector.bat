@@ -4,18 +4,25 @@
 title Matwarey Injector x64 Stable
 
 :: Check if the PC is x64 bit
-reg Query "HKLM\Hardware\Description\System\CentralProcessor\0" | find /i "x86" > NUL && set OS=32BIT || set OS=64BIT
-if %OS%==32BIT set Unsupported=1
-if %OS%==64BIT goto Loop
+cd /
+IF EXIST "%PROGRAMFILES(X86)%" (set OS=x64) else (set OS=x86)
+if %OS%==x64 goto Loop
+
+:: Setup Alert								
+if %OS%==x86 set Unsupported=1
 
 :X32Bitunsupported
-if %Unsupported%==1 title Matwarey Injector can't run!
-if %Unsupported%==1 if %OS%==32BIT echo This is a 32bit operating system
-if %Unsupported%==1 echo %OS% Isn't allowed on a x64 batch file!
-if %Unsupported%==1 echo You can't run this batch file, please run the x32 version.
-if %Unsupported%==1 echo.
-if %Unsupported%==1 pause
-if %Unsupported%==1 if %OS%==32BIT exit
+if %Unsupported%==1 if %OS%==x86 title Matwarey Injector Error x86
+if %Unsupported%==1 if %OS%==x86 echo Matwarey Injector unsupported processer
+if %Unsupported%==1 if %OS%==x86 echo You'll be transferred to Matwarey Injector x86
+if %Unsupported%==1 if %OS%==x86 echo.
+if %Unsupported%==1 if %OS%==x86 timeout /t 3 >nul
+
+:: Switch them to the correct processer version
+if %Unsupported%==1 if %OS%==x86 cls
+if %Unsupported%==1 if %OS%==x86 cd C:\Users\%username%\Downloads\Matwarey Injector\x86\
+if %Unsupported%==1 if %OS%==x86 start injector.bat
+if %Unsupported%==1 if %OS%==x86 exit
 
 :: Load Main Menu
 :Loop
