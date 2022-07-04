@@ -3,10 +3,24 @@
 @Mode 77,13
 title Matwarey Injector x64 Stable
 
+:: Check if the PC is x64 bit
+reg Query "HKLM\Hardware\Description\System\CentralProcessor\0" | find /i "x86" > NUL && set OS=32BIT || set OS=64BIT
+if %OS%==32BIT set Unsupported=1
+if %OS%==64BIT goto Loop
+
+:X32Bitunsupported
+if %Unsupported%==1 title Matwarey Injector can't run!
+if %Unsupported%==1 if %OS%==32BIT echo This is a 32bit operating system
+if %Unsupported%==1 echo %OS% Isn't allowed on a x64 batch file!
+if %Unsupported%==1 echo You can't run this batch file, please run the x32 version.
+if %Unsupported%==1 echo.
+if %Unsupported%==1 pause
+if %Unsupported%==1 if %OS%==32BIT exit
+
 :: Load Main Menu
+:Loop
 Batbox /h 0
 
-:Loop
 cd C:\Users\%username%\Downloads\Matwarey Injector\x64\
 cls
 Call Button  2 4 "Inject" 65 4 "Eject" 33 4 "Exit" # Press
