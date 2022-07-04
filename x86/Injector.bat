@@ -139,6 +139,7 @@ goto ConfirmIDFileS
 :inject
 cls
 :: Inject into Process Name
+set PN=1
 injector.exe -n %ProcessName% -i %FileName%
 :: Notify Person
 echo Injector.exe Task Completed!
@@ -149,6 +150,7 @@ goto Loop
 :injectID
 cls
 :: Injects into Process PID
+set PIDU=1
 injector.exe -p %ProcessID% -i %FileName%
 :: Notify Person
 echo Injector.exe Task Completed!
@@ -158,8 +160,10 @@ goto Loop
 
 :Eject
 cls
-injector.exe -n %ProcessName% -e %FileName% >nul
-injector.exe -p %ProcessID% -e %FileName% >nul
+if %PIDU%==1 injector.exe -n %ProcessName% -e %FileName%
+if %PN%==1 injector.exe -p %ProcessID% -e %FileName%
 echo DLL Ejected.
 pause
+set PN=0
+set PIDU=0
 goto Loop
