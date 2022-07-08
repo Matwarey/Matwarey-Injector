@@ -3,7 +3,7 @@ This is a DLL Injector made out of Batch with the help with a EXE Program.
 
 ## Checklist for v2.0.1
 
-None
+1) Find all possible bugs and try to patch them.
 
 # Checklist for v3.0.0
 
