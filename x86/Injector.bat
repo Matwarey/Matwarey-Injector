@@ -3,11 +3,17 @@
 @Mode 77,13
 title Matwarey Injector x86 Stable
 
+:Dev
+:: Check if in developer mode folder (no changes special happens really..)
+if %username%==Matth cd C:\Users\Matth\Documents\GitHub\Matwarey-Injector\x64
+if %username%==Matth title Matwarey Injector x86 Dev
+if %username%==Matth goto Loop
+
 :: Load Main Menu
+:Loop
 Batbox /h 0
 
-:Loop
-cd C:\Users\%username%\Downloads\Matwarey Injector\x86\
+cd C:\Users\%username%\Downloads\Matwarey-Injector\x86\
 cls
 Call Button  2 4 "Inject" 65 4 "Eject" 33 4 "Exit" # Press
 Getinput /m %Press% /h 70
@@ -57,6 +63,7 @@ echo.
 set /p FileName=#:
 cls
 :ConfirmPNFile
+cls
 echo %FileName% has been wrote here, is this correct? 
 echo.
 echo 1) Yes
@@ -73,6 +80,7 @@ echo Select a DLL File.
 set pwshcmd=powershell -noprofile -command "&{[System.Reflection.Assembly]::LoadWithPartialName('System.windows.forms') | Out-Null;$OpenFileDialog = New-Object System.Windows.Forms.OpenFileDialog; $OpenFileDialog.ShowDialog()|out-null; $OpenFileDialog.FileName}"
 for /f "delims=" %%I in ('%pwshcmd%') do set "FileName=%%I"
 :ConfirmPNFileS
+cls
 echo %FileName% has been selected, is this correct?
 echo.
 echo 1) Yes
@@ -109,6 +117,7 @@ echo.
 set /p FileName=#: 
 cls
 :ConfirmIDFile
+cls
 echo %FileName% has been wrote here, is this correct?
 echo.
 echo 1) Yes
@@ -125,6 +134,7 @@ echo Select a DLL File.
 set pwshcmd=powershell -noprofile -command "&{[System.Reflection.Assembly]::LoadWithPartialName('System.windows.forms') | Out-Null;$OpenFileDialog = New-Object System.Windows.Forms.OpenFileDialog; $OpenFileDialog.ShowDialog()|out-null; $OpenFileDialog.FileName}"
 for /f "delims=" %%I in ('%pwshcmd%') do set "FileName=%%I"
 :ConfirmIDFileS
+cls
 echo %FileName% has been selected, is this correct?
 echo.
 echo 1) Yes
@@ -160,10 +170,19 @@ goto Loop
 
 :Eject
 cls
+:: Check if they have a DLL Injected
+if %PIDU%==0 if %PN%==0 echo WOAH! You don't have a DLL injected yet!
+if %PN%==0 if %PIDU%==0 pause
+if %PIDU%==1 goto Eject2
+if %PN%==1 goto Eject2
+if %PN%==0 goto Loop
+if %PIDU%==0 goto Loop
+
+:Eject2
+cls
 if %PIDU%==1 injector.exe -n %ProcessName% -e %FileName%
 if %PN%==1 injector.exe -p %ProcessID% -e %FileName%
-echo DLL Ejected.
+if %PN%==1 echo DLL Ejected.
+if %PIDU%==1 echo DLL Ejected.
 pause
-set PN=0
-set PIDU=0
 goto Loop
