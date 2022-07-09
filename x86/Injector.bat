@@ -5,7 +5,7 @@ title Matwarey Injector x86 Stable
 
 :Dev
 :: Check if in developer mode folder (no changes special happens really..)
-if %username%==Matth cd C:\Users\Matth\Documents\GitHub\Matwarey-Injector\x64
+if %username%==Matth cd C:\Users\Matth\Documents\GitHub\Matwarey-Injector\x86
 if %username%==Matth title Matwarey Injector x86 Dev
 if %username%==Matth goto Loop
 
