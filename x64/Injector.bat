@@ -33,6 +33,7 @@ if %username%==Matth goto Loop
 
 :: Load Main Menu
 :Loop
+cd C:/Users/Matth/Downloads/Matwarey-Injector/x64/
 Batbox /h 0
 
 cls
