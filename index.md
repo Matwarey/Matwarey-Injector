@@ -56,6 +56,8 @@ Press '2' to open file selecter (Faster way to search for DLL)
 
 If you picked 1 then go ahead and find the dll file, and drag it into the command prompt, it will paste it into the textbox.
 
+If you picked 2 then go ahead and find the dll file and pick it within the file window, click the dll then it should appear into the command prompt.
+
 Or you can CTRL+C and CTRL+V into the Command Prompt.
 
 After finding/copying your DLL Path into the batch program, Press 'Enter' it'll confirm if you did it correct or not
@@ -99,6 +101,8 @@ Press '1' to copy file path (Great for Low End Computers)
 Press '2' to open file selecter (Faster way to search for DLL)
 
 If you picked 1 then go ahead and find the dll file, and drag it into the command prompt, it will paste it into the textbox.
+
+If you picked 2 then go ahead and find the dll file and pick it within the file window, click the dll then it should appear into the command prompt.
 
 Or you can CTRL+C and CTRL+V into the Command Prompt.
 
