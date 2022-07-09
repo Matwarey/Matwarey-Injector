@@ -62,6 +62,7 @@ echo Copy File Directory Below:
 echo.
 set /p FileName=#:
 cls
+
 :ConfirmPNFile
 cls
 echo %FileName% has been wrote here, is this correct? 
@@ -79,6 +80,7 @@ cls
 echo Select a DLL File.
 set pwshcmd=powershell -noprofile -command "&{[System.Reflection.Assembly]::LoadWithPartialName('System.windows.forms') | Out-Null;$OpenFileDialog = New-Object System.Windows.Forms.OpenFileDialog; $OpenFileDialog.ShowDialog()|out-null; $OpenFileDialog.FileName}"
 for /f "delims=" %%I in ('%pwshcmd%') do set "FileName=%%I"
+
 :ConfirmPNFileS
 cls
 echo %FileName% has been selected, is this correct?
@@ -97,6 +99,7 @@ cls
 echo What's the ID of the process?
 set /p ProcessID=ID of Process: 
 cls
+
 :ProcessIDQNA
 echo Do you want to copy file path or open file selecter?
 echo.
@@ -116,6 +119,7 @@ echo Copy File Directory Below:
 echo.
 set /p FileName=#: 
 cls
+
 :ConfirmIDFile
 cls
 echo %FileName% has been wrote here, is this correct?
@@ -133,6 +137,7 @@ cls
 echo Select a DLL File.
 set pwshcmd=powershell -noprofile -command "&{[System.Reflection.Assembly]::LoadWithPartialName('System.windows.forms') | Out-Null;$OpenFileDialog = New-Object System.Windows.Forms.OpenFileDialog; $OpenFileDialog.ShowDialog()|out-null; $OpenFileDialog.FileName}"
 for /f "delims=" %%I in ('%pwshcmd%') do set "FileName=%%I"
+
 :ConfirmIDFileS
 cls
 echo %FileName% has been selected, is this correct?
